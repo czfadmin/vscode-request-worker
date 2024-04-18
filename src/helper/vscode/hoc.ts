@@ -29,7 +29,7 @@ export function withCommand(options: WithCommandOptions) {
  * @param options
  * @returns
  */
-export function withTextCommand(options: WithTextCommandOptions) {
+export function withTextEditorCommand(options: WithTextCommandOptions) {
   return function (handler: (...args: any[]) => void) {
     if (!handler.name || (options && !options.name)) {
       console.error('command name is null');

@@ -1,5 +1,6 @@
 # vscode-request-worker 
 
+![GitHub last commit](https://img.shields.io/github/last-commit/czfadmin/vscode-request-worker?logo=github)
 Client tools for requesting development APIs
 
 ## Features

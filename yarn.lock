@@ -5279,6 +5279,11 @@ vitest@^1.5.0:
     vite-node "1.5.0"
     why-is-node-running "^2.2.2"
 
+vsc-extension-helper@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/vsc-extension-helper/-/vsc-extension-helper-0.0.1.tgz#4782258b7abe349116fc6d6b6590d77e252372f3"
+  integrity sha512-vuFEZYUwMOPaLbsZECRRmT0m+LldhiPNz0NPIxSmykRVm4I31mXbHfCZjd2ap/cUJmtw84RARyC0EKilspNQXA==
+
 watchpack@^2.4.1:
   version "2.4.1"
   resolved "https://registry.npmmirror.com/watchpack/-/watchpack-2.4.1.tgz#29308f2cac150fa8e4c92f90e0ec954a9fed7fff"

@@ -11,7 +11,3 @@ class CommandUtils {
 }
 
 export default CommandUtils;
-
-withCommand({name: 'sendRequest3'})(function sendRequest3() {
-  console.log('sendRequest3');
-});

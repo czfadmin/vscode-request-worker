@@ -1,8 +1,8 @@
 import 'reflect-metadata';
+import {withActivate} from 'vsc-extension-helper';
 
 import {ExtensionContext} from 'vscode';
 import {EXTENSION_NAME} from './constants';
-import { withActivate } from './helper/vscode';
 
 export const activate = withActivate({
   extensionId: EXTENSION_NAME,
