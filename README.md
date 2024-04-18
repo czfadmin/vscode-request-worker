@@ -1,6 +1,6 @@
 # vscode-request-worker 
 
-此工具主要用于管理开发时的 api, 同时提供简要的 api 发送接口
+Client tools for requesting development APIs
 
 ## Features
 

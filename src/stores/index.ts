@@ -1,13 +1,21 @@
-import { makeObservable } from 'mobx';
+import {makeObservable, observable} from 'mobx';
 import Container from 'typedi';
-
-
+import {Configuration} from './Configuration';
 
 class RootStore {
+  configuration: Configuration;
+
   constructor() {
-    makeObservable(this, {});
+    this.configuration = new Configuration();
+
+    makeObservable(this, {
+      configuration: observable,
+    });
   }
 }
 
-const rootStore = new RootStore();
-Container.set('rootStore', rootStore);
+const store = new RootStore();
+
+export default store;
+
+Container.set('store', store);

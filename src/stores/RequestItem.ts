@@ -1,5 +1,5 @@
-import { action, computed, makeObservable, observable } from 'mobx';
-import { ThemeIcon } from 'vscode';
+import {action, computed, flow, makeObservable, observable} from 'mobx';
+import {ThemeIcon} from 'vscode';
 
 export enum RequestStatus {
   Running,
@@ -8,20 +8,47 @@ export enum RequestStatus {
   Empty,
 }
 
+export enum HttpMethodEnum {
+  GET = 'GET',
+  POST = 'POST',
+  DELETE = 'DELETE',
+  PATCH = 'PATCH',
+  PUT = 'PUT',
+  ALL = 'ALL',
+}
+
+export const HttpMethodIcons = {};
+
 export class RequestItem {
   path: string = '';
 
+  method: HttpMethodEnum = HttpMethodEnum.GET;
+
   status: RequestStatus = RequestStatus.Empty;
 
-  constructor(path: string, status: RequestStatus = RequestStatus.Empty) {
+  extra: any;
+
+  constructor(
+    path: string,
+    method: HttpMethodEnum,
+    extra: any,
+    status: RequestStatus = RequestStatus.Empty,
+  ) {
     this.path = path;
     this.status = status;
+    this.method = method;
+    this.extra = extra;
     makeObservable(this, {
       path: observable,
       status: observable,
+      method: observable,
+      extra: observable,
       icon: computed,
-      changeState: action,
+      statusIcon: computed,
+      changeStatus: action,
       setPath: action,
+      setMethod: action,
+      fetch: flow,
     });
   }
 
@@ -29,11 +56,19 @@ export class RequestItem {
     this.path = path;
   }
 
-  changeState(status: RequestStatus) {
+  setMethod(method: HttpMethodEnum = HttpMethodEnum.GET) {
+    this.method = method;
+  }
+
+  changeStatus(status: RequestStatus) {
     this.status = status;
   }
 
   get icon() {
+    return HttpMethodIcons[this.method];
+  }
+
+  get statusIcon() {
     switch (this.status) {
       case RequestStatus.Running:
         return new ThemeIcon('sync~spin');
@@ -45,4 +80,6 @@ export class RequestItem {
         return new ThemeIcon('globe');
     }
   }
+
+  *fetch() {}
 }
