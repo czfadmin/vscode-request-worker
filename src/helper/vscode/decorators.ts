@@ -26,7 +26,7 @@ export function command(options?: CommandOptions) {
 }
 
 /**
- * @zh 用于注册 `textEditorCommand`
+ * @zh 用于注册 `textEditorCommand` 的装饰器
  * @param options
  * @returns
  */

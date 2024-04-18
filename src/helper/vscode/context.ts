@@ -8,14 +8,26 @@ globalContext.set(EXTENSION_ID, '');
 globalContext.set(EXTENSION_CONTEXT, null);
 globalContext.set(EXTENSION_COMMANDS, [] as string[]);
 
+/**
+ * @zh 获取插件id
+ * @returns
+ */
 export function useExtensionId() {
   return globalContext.get(EXTENSION_ID);
 }
 
+/**
+ * @zh 获取插件上下文
+ * @returns
+ */
 export function useExtensionContext() {
   return globalContext.get(EXTENSION_CONTEXT);
 }
 
+/**
+ * @zh 获取所有的命令,以及增加命令, 删除命令
+ * @returns
+ */
 export function useCommands(): [
   string[],
   (name: string) => void,
@@ -36,6 +48,10 @@ interface RegisterContextOption extends WithActiveOptions {
   context: ExtensionContext;
 }
 
+/**
+ * @zh 注册上下文
+ * @param options
+ */
 export function registerContext(options: RegisterContextOption) {
   globalContext.set(EXTENSION_CONTEXT, options.context);
   globalContext.set(EXTENSION_ID, options.extensionId);

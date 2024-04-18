@@ -7,6 +7,12 @@ import {
 import {useCommands, useExtensionContext, useExtensionId} from './context';
 import {CommandOptions} from './types';
 
+/**
+ * @zh 内部注册命令辅助函数
+ * @param params 
+ * @param options 
+ * @returns 
+ */
 export function internnalRegisterCommand(
   params: {
     cmdName: string;

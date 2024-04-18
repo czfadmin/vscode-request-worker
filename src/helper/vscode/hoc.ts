@@ -7,6 +7,11 @@ import {
 } from './types';
 import {internnalRegisterCommand} from './utils';
 
+/**
+ * @zh 通过高阶函数创建一个命令
+ * @param options
+ * @returns
+ */
 export function withCommand(options: WithCommandOptions) {
   return function (handler: (...args: any[]) => void) {
     if (!handler.name || (options && !options.name)) {
@@ -19,6 +24,11 @@ export function withCommand(options: WithCommandOptions) {
   };
 }
 
+/**
+ * @zh 通过高阶函数注册`TextEditor`命令
+ * @param options
+ * @returns
+ */
 export function withTextCommand(options: WithTextCommandOptions) {
   return function (handler: (...args: any[]) => void) {
     if (!handler.name || (options && !options.name)) {
@@ -39,6 +49,11 @@ export function withTextCommand(options: WithTextCommandOptions) {
 
 type ExtensionActivateHandler = (context: ExtensionContext) => void;
 
+/**
+ * @zh 通过高阶函数将context注入到`ExtensionActivateHandler`中
+ * @param handler
+ * @returns
+ */
 export function withExtensionContext(
   handler?: (context: ExtensionContext, ...args: any[]) => any,
 ) {
@@ -49,7 +64,7 @@ export function withExtensionContext(
 }
 
 /**
- * 必须要在激活的时候
+ * @zh 必须要在激活的时候, 在插件激活的时候注入上下文和插件ID并将其保存到全局变量中,保证后面可以调用
  * @param options
  * @returns
  */
